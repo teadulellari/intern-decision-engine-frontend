@@ -9,4 +9,4 @@
 ### Problems & Improvement Suggestions
 - There are suggestions from `Dart linter` that could be fixed before the PR.
 - the key could be provided by using [super initializer](https://dart.dev/tools/linter-rules/use_super_parameters) concept
--
+- We can use `const` for the constant elements such as `Row`, `Column` as suggested [here](https://dart.dev/tools/linter-rules/prefer_const_constructors)
