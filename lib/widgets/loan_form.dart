@@ -100,7 +100,7 @@ class _LoanFormState extends State<LoanForm> {
                     activeColor: AppColors.secondaryColor,
                     onChanged: (double newValue) {
                       setState(() {
-                        _loanAmount = ((newValue.floor() / 100).round() * 100);
+                        _loanAmount = newValue.toInt();
                         _submitForm();
                       });
                     },
