@@ -15,7 +15,7 @@ void main() {
 
 // This widget builds the loan application form.
 class InBankForm extends StatelessWidget {
-  const InBankForm({Key? key}) : super(key: key);
+  const InBankForm({super.key});
 
   @override
   Widget build(BuildContext context) {
