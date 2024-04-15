@@ -4,11 +4,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:inbank_frontend/fonts.dart';
+import 'package:inbank_frontend/utils/fonts.dart';
 import 'package:inbank_frontend/widgets/national_id_field.dart';
 
-import '../api_service.dart';
-import '../colors.dart';
+import '../service/api_service.dart';
+import '../utils/colors.dart';
 
 // LoanForm is a StatefulWidget that displays a loan application form.
 class LoanForm extends StatefulWidget {

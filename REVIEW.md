@@ -31,3 +31,8 @@
 - In `api_service` we can use conditional operator and eliminate some verbose parts of the code.
 - `_submitForm` method inside of `loan_form` can use guard cause to simplify and improve the readability of the codebase. This method also tries to update state variables without calling setState in case validation fails. I also believe that there is unnecessary if conditions which does not bring any value other than increasing the code complexity. 
 
+
+## Subjective topics
+
+- I believe we can group similar files/widget into folders to make the workflow easier to understand. For example, we can move the `api_service` to `service` folder and we can move `fonts`,`colors`, `slider_style` to `utils` folder. I believe this would provide better codebase structure.
+- There are lots of files and folders that are related to multi-platform builds. As I am not expert on Flutter side, I would like to clarify if we really need these files on our github repository? Because if these files can be re-generated on user side without having a side-effect, then there is no reason to pollute our repository with unused files that are related to internal system of flutter.

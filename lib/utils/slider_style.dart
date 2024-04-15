@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inbank_frontend/colors.dart';
+import 'package:inbank_frontend/utils/colors.dart';
 
 // This class represents the shape of the thumb of a slider.
 // It extends the SliderComponentShape class and overrides

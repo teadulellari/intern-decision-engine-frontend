@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
-import 'package:inbank_frontend/api_service.dart';
+import 'package:inbank_frontend/service/api_service.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -14,7 +14,7 @@ void main() {
         final response = {
           'loanAmount': 2000,
           'loanPeriod': 20,
-          'errorMessage': 'null',
+          'errorMessage': null,
         };
         return http.Response(jsonEncode(response), 200);
       });
@@ -36,8 +36,8 @@ void main() {
     test('requestLoanDecision returns an error message', () async {
       final mockClient = MockClient((request) async {
         final response = {
-          'loanAmount': 'null',
-          'loanPeriod': 'null',
+          'loanAmount': null,
+          'loanPeriod': null,
           'errorMessage': 'Invalid loan amount!',
         };
         return http.Response(jsonEncode(response), 400);
