@@ -12,7 +12,7 @@ import '../colors.dart';
 
 // LoanForm is a StatefulWidget that displays a loan application form.
 class LoanForm extends StatefulWidget {
-  const LoanForm({Key? key}) : super(key: key);
+  const LoanForm({super.key});
 
   @override
   _LoanFormState createState() => _LoanFormState();

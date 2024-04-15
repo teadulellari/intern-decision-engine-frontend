@@ -1,3 +1,12 @@
+# REVIEW BRANCH
+
+This is the review branch of the TICKET101 task of **FRONTEND** part of the task. 
+Normally this process should be done through pull request but for our case, sadly it is not possible as the intern decided to push the changes to the main branch.
+Please check out the [REVIEW.md](REVIEW.md) to see the documented version of the review and changes. Please note that this review file **only contains frontend review**
+I will use this branch to do the necessary changes if there are any, in order to help the intern to finish the TICKET101 task.
+
+If you want to check the review of **backend** side, please go to the backend branch of [TICKET101-review](https://github.com/teadulellari/intern-decision-engine-backend/tree/TICKET101-review)
+
 # InBank Frontend
 
 This project is a frontend application for the InBank loan application service.
