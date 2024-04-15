@@ -6,6 +6,7 @@
 - Intern followed `Seperation of Concern` concept and split the `color`,`fonts` and `slider_style` into separate files. This increased the readability and reusability of the code.
 - Color choices and design looks nice and it has user friendly UI.
 - Async web requests separated from UI view components and that made it easier to read and understand the code
+- It has tests for `api_service` and `loan_form`
 
 ### Problems & Improvement Suggestions
 - There are suggestions from `Dart linter` that could be fixed before the PR.
@@ -21,3 +22,7 @@
 - Overflow happens on bottom of the UI when height is between (750,800] pixel height. The headline does not disappear and it makes the bottom UI to overflow as it takes 81 pixel (54 font size * 1.5 line height). Increasing the minHeight  to `540` would fix the problem but still, We could change the view structure and add scrollable view to eliminate overflow cases but that means user might need to scroll when its needed.
 - in `Samsung Galaxy A51/71` view of chrome, the headline uses 2 rows as the width is not fitting the text and this causes overflow as well. The temporary solution would be reducing the font size.
 - in UI, Loan period slider displays `6 months` as minimum value but it is actually `12 month` but this is only visual problem, the minimum value that slider can be set is still 12. We just need to change the text.
+- In `api_service` test `requestLoanDecision returns a valid decision` uses invalid response as expected response. This is technically not a problem but it might create confusion into making the frontend developer to think that if they provide same query, backend should respond as valid loan but it is not the case as the user is segment 1 user and it tries to request 10000$ with 12 month period.
+- In `api_service` test `requestLoanDecision returns an error message` uses invalid loan amount (50.000$) and expect that the error would be `Loan application denied` but it should be expecting `Invalid loan amount!`
+- In `loan_form` test `LoanForm slider changes the loan amount` asserts that slider points to `2500` after it is slided but this approach is problematic. As the default value is `2500` the test gives an illusion of testing. Test is trying to use the same widget but the sliding action is not updating the widget that is created by `tester.widget` method. After the movement, test needs to create the updated version of the widget by using the same finder, in order to see the new value of it.
+- The same behavior is true for `LoanForm slider changes the loan period` test case as well. It tests the default case and needs the same modification that I mentioned in my previous point.

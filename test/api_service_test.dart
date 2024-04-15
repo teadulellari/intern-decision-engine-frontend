@@ -12,8 +12,8 @@ void main() {
     test('requestLoanDecision returns a valid decision', () async {
       final mockClient = MockClient((request) async {
         final response = {
-          'loanAmount': 10000,
-          'loanPeriod': 12,
+          'loanAmount': 2000,
+          'loanPeriod': 20,
           'errorMessage': 'null',
         };
         return http.Response(jsonEncode(response), 200);
@@ -21,15 +21,15 @@ void main() {
       apiService = ApiService(client: mockClient);
 
       const personalCode = '50307172740';
-      const loanAmount = 10000;
-      const loanPeriod = 12;
+      const loanAmount = 2000;
+      const loanPeriod = 20;
 
       final result = await apiService.requestLoanDecision(
           personalCode, loanAmount, loanPeriod);
 
       expect(result, isA<Map<String, String>>());
-      expect(result['loanAmount'], '10000');
-      expect(result['loanPeriod'], '12');
+      expect(result['loanAmount'], '2000');
+      expect(result['loanPeriod'], '20');
       expect(result['errorMessage'], '');
     });
 
@@ -38,7 +38,7 @@ void main() {
         final response = {
           'loanAmount': 'null',
           'loanPeriod': 'null',
-          'errorMessage': 'Loan application denied',
+          'errorMessage': 'Invalid loan amount!',
         };
         return http.Response(jsonEncode(response), 400);
       });
@@ -55,7 +55,7 @@ void main() {
       expect(result, isA<Map<String, String>>());
       expect(result['loanAmount'], '0');
       expect(result['loanPeriod'], '0');
-      expect(result['errorMessage'], 'Loan application denied');
+      expect(result['errorMessage'], 'Invalid loan amount!');
     });
   });
 }

@@ -24,40 +24,48 @@ void main() {
   // Test the slider behavior for loan amount
   testWidgets('LoanForm slider changes the loan amount',
       (WidgetTester tester) async {
-    await tester.pumpWidget(MaterialApp(
+    await tester.pumpWidget(const MaterialApp(
         home: Scaffold(
       body: Column(
-        children: const [LoanForm()],
+        children: [LoanForm()],
       ),
     )));
-    final Slider slider = tester.widget(find.byType(Slider).first);
-    const double newValue = 2500;
+    final Finder sliderFinder = find.byType(Slider).first;
+    const double defaultValue = 2500;
+    const double newValue = 2000;
+    final initialSliderWidget = tester.widget<Slider>(sliderFinder);
+    expect(initialSliderWidget.value, defaultValue);
 
     // Perform slider interaction
-    await tester.drag(find.byType(Slider).first, const Offset(10.0, 0));
+    await tester.drag(sliderFinder, const Offset(-1000, 0));
     await tester.pumpAndSettle();
 
     // Verify slider value changed
-    expect(slider.value, newValue);
+    final updatedSliderWidget = tester.widget<Slider>(sliderFinder);
+    expect(updatedSliderWidget.value, newValue);
   });
 
   // Test the slider behavior for loan period
   testWidgets('LoanForm slider changes the loan period',
       (WidgetTester tester) async {
-    await tester.pumpWidget(MaterialApp(
+    await tester.pumpWidget(const MaterialApp(
         home: Scaffold(
       body: Column(
-        children: const [LoanForm()],
+        children: [LoanForm()],
       ),
     )));
-    final Slider slider = tester.widget(find.byType(Slider).last);
-    const double newValue = 36;
+    final Finder sliderFinder = find.byType(Slider).last;
+    const double defaultValue = 36;
+    const double newValue = 12;
+    final initialSliderWidget = tester.widget<Slider>(sliderFinder);
+    expect(initialSliderWidget.value, defaultValue);
 
     // Perform slider interaction
-    await tester.drag(find.byType(Slider).last, const Offset(10.0, 0));
+    await tester.drag(sliderFinder, const Offset(-1000, 0));
     await tester.pumpAndSettle();
 
     // Verify slider value changed
-    expect(slider.value, newValue);
+    final updatedSliderWidget = tester.widget<Slider>(sliderFinder);
+    expect(updatedSliderWidget.value, newValue);
   });
 }
