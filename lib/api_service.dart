@@ -30,15 +30,11 @@ class ApiService {
     try {
       // Decode the API response and update response data variables
       final responseData = jsonDecode(response.body) as Map<String, dynamic>;
-      responseAmount = responseData['loanAmount'].toString();
-      responsePeriod = responseData['loanPeriod'].toString();
-      responseError = responseData['errorMessage'].toString();
-
       // Return the response data as a map, handling null values if necessary
       return {
-        'loanAmount': responseAmount != 'null' ? responseAmount : '0',
-        'loanPeriod': responsePeriod != 'null' ? responsePeriod : '0',
-        'errorMessage': responseError != 'null' ? responseError : '',
+        'loanAmount': responseData['loanAmount'] != null ? responseData['loanAmount'].toString() : '0',
+        'loanPeriod': responseData['loanPeriod'] != null ? responseData['loanPeriod'].toString() : '0',
+        'errorMessage': responseData['errorMessage'] != null ? responseData['errorMessage'].toString() : '',
       };
     } catch (e) {
       // An unexpected error occurred when querying the server,

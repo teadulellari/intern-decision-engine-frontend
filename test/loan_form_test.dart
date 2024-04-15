@@ -5,10 +5,10 @@ import 'package:inbank_frontend/widgets/loan_form.dart';
 void main() {
   testWidgets('LoanForm displays the form and initial values',
       (WidgetTester tester) async {
-    await tester.pumpWidget(MaterialApp(
+    await tester.pumpWidget(const MaterialApp(
         home: Scaffold(
       body: Column(
-        children: const [LoanForm()],
+        children: [LoanForm()],
       ),
     )));
     // Verify the form and initial values are displayed

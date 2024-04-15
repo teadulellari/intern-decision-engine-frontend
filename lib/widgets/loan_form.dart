@@ -31,26 +31,19 @@ class _LoanFormState extends State<LoanForm> {
   // Submit the form and update the state with the loan decision results.
   // Only submits if the form inputs are validated.
   void _submitForm() async {
-    if (_formKey.currentState!.validate()) {
-      final result = await _apiService.requestLoanDecision(
-          _nationalId, _loanAmount, _loanPeriod);
+    if (!_formKey.currentState!.validate()) {
       setState(() {
-        int tempAmount = int.parse(result['loanAmount'].toString());
-        int tempPeriod = int.parse(result['loanPeriod'].toString());
-
-        if (tempAmount <= _loanAmount || tempPeriod > _loanPeriod) {
-          _loanAmountResult = int.parse(result['loanAmount'].toString());
-          _loanPeriodResult = int.parse(result['loanPeriod'].toString());
-        } else {
-          _loanAmountResult = _loanAmount;
-          _loanPeriodResult = _loanPeriod;
-        }
-        _errorMessage = result['errorMessage'].toString();
-      });
-    } else {
       _loanAmountResult = 0;
       _loanPeriodResult = 0;
+      });
+      return;
     }
+    final result = await _apiService.requestLoanDecision(_nationalId, _loanAmount, _loanPeriod);
+    setState(() {
+      _loanAmountResult = int.parse(result['loanAmount'].toString());
+      _loanPeriodResult = int.parse(result['loanPeriod'].toString());
+      _errorMessage = result['errorMessage'].toString();
+    });
   }
 
   // Builds the application form widget.
@@ -80,7 +73,6 @@ class _LoanFormState extends State<LoanForm> {
                             onChanged: (value) {
                               setState(() {
                                 _nationalId = value ?? '';
-                                _submitForm();
                               });
                             },
                           ),
@@ -101,7 +93,6 @@ class _LoanFormState extends State<LoanForm> {
                     onChanged: (double newValue) {
                       setState(() {
                         _loanAmount = newValue.toInt();
-                        _submitForm();
                       });
                     },
                   ),
@@ -140,7 +131,6 @@ class _LoanFormState extends State<LoanForm> {
                     onChanged: (double newValue) {
                       setState(() {
                         _loanPeriod = newValue.toInt();
-                        _submitForm();
                       });
                     },
                   ),
@@ -167,6 +157,12 @@ class _LoanFormState extends State<LoanForm> {
                     ],
                   ),
                   const SizedBox(height: 24.0),
+                  ElevatedButton(
+                  onPressed: () {
+                    _submitForm();
+                  },
+                  child: const Text('Submit'),
+          )
                 ],
               ),
             ),

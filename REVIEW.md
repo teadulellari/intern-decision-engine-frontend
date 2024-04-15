@@ -7,6 +7,8 @@
 - Color choices and design looks nice and it has user friendly UI.
 - Async web requests separated from UI view components and that made it easier to read and understand the code
 - It has tests for `api_service` and `loan_form`
+- it limits the user input in `personal code` field by asking 11 character and not letting the user type characters and it does validation
+
 
 ### Problems & Improvement Suggestions
 - There are suggestions from `Dart linter` that could be fixed before the PR.
@@ -26,3 +28,6 @@
 - In `api_service` test `requestLoanDecision returns an error message` uses invalid loan amount (50.000$) and expect that the error would be `Loan application denied` but it should be expecting `Invalid loan amount!`
 - In `loan_form` test `LoanForm slider changes the loan amount` asserts that slider points to `2500` after it is slided but this approach is problematic. As the default value is `2500` the test gives an illusion of testing. Test is trying to use the same widget but the sliding action is not updating the widget that is created by `tester.widget` method. After the movement, test needs to create the updated version of the widget by using the same finder, in order to see the new value of it.
 - The same behavior is true for `LoanForm slider changes the loan period` test case as well. It tests the default case and needs the same modification that I mentioned in my previous point.
+- In `api_service` we can use conditional operator and eliminate some verbose parts of the code.
+- `_submitForm` method inside of `loan_form` can use guard cause to simplify and improve the readability of the codebase. This method also tries to update state variables without calling setState in case validation fails. I also believe that there is unnecessary if conditions which does not bring any value other than increasing the code complexity. 
+
