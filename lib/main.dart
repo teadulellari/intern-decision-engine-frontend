@@ -21,7 +21,7 @@ class InBankForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final bodyHeight = screenHeight / 1.5;
-    const minHeight = 500.0;
+    const minHeight = 540.0;
     final showText = bodyHeight > minHeight;
     return MaterialApp(
       title: 'Loan Application',
@@ -44,7 +44,6 @@ class InBankForm extends StatelessWidget {
       home: Scaffold(
         // Center the body and set its height.
         body: Center(
-            child: Expanded(
           child: SizedBox(
             height: max(minHeight, bodyHeight),
             child: Column(
@@ -65,7 +64,7 @@ class InBankForm extends StatelessWidget {
               ],
             ),
           ),
-        )),
+        ),
       ),
     );
   }

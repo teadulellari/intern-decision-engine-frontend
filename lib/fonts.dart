@@ -15,7 +15,7 @@ TextStyle bodyMedium = GoogleFonts.openSans(
 // Heading text style
 TextStyle displayLarge = const TextStyle(
   fontFamily: 'Blacker',
-  fontSize: 54.0,
+  fontSize: 42.0,
   height: 1.5,
   textBaseline: TextBaseline.alphabetic,
   color: AppColors.textColor,
