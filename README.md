@@ -1,3 +1,7 @@
+# Main (Intern) branch
+
+this branch represents the version that implemented by the intern. In order to see the review and changes that is done by my side, please check [TICKET101-review](https://github.com/teadulellari/intern-decision-engine-frontend/tree/TICKET101-review) and [REVIEW.md](https://github.com/teadulellari/intern-decision-engine-frontend/blob/TICKET101-review/REVIEW.md) in TICKET101-review branch.
+
 # InBank Frontend
 
 This project is a frontend application for the InBank loan application service.
