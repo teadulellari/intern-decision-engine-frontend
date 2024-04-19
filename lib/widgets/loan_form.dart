@@ -53,7 +53,7 @@ class _LoanFormState extends State<LoanForm> {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final formWidth = screenWidth / 3;
-    const minWidth = 500.0;
+    const minWidth = 580.0;
     return Expanded(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
